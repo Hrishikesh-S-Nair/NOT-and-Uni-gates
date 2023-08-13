@@ -1,0 +1,22 @@
+*vtc characteristics of NAND
+vdd 1 0 dc 1.8v
+va A 0 pulse 0v 1.8v 1ns 1ns 1ns 10ns 20ns
+vb B 0 pulse 0v 1.8v 5ns 1ns 1ns 10ns 20ns
+
+Mp1 1   A  out   1 P1 w=2u l=90nm
+Mp2 1   B  out   1 P1 w=2u l=90nm
+
+Mn1 X   A  out 0 N1 w=2u l=90nm
+Mn2 0   B  X   0 N1 w=2u l=90nm
+
+
+.include modelcard.nmos
+.include modelcard.pmos
+
+.tran 0.1ns 50ns
+.control
+run
+plot v(out) v(A) v(B)
+
+.endc
+.end

@@ -1,0 +1,29 @@
+*vtc characteristics of NOR
+vdd 1 0 dc 1.8v
+va 2 0 pulse 0v 1.8v 1ns 0.1ns 0.1ns 10ns 20ns
+vb 3 0 pulse 0v 1.8v 5ns 0.1ns 0.1ns 10ns 20ns
+
+Mpx1 21  2 1 0 P1 w=2u l=90nm
+Mnx1 21  2 0 0 N1 w=1u l=90nm
+
+Mpx2 31  3 1 0 P1 w=2u l=90nm
+Mnx2 31  3 0 0 N1 w=1u l=90nm
+
+
+Mp1 4 21 1 1 P1 w=4u l=90nm
+Mp2 5 31 4 1 P1 w=4u l=90nm
+
+Mn1 5 21 0 0 N1 w=0.5u l=90nm
+Mn2 5 31 0 0 N1 w=0.5u l=90nm
+
+
+.include modelcard.nmos
+.include modelcard.pmos
+
+.tran 0.1ns 50ns
+.control
+run
+plot v(5) v(21) v(31)
+
+.endc
+.end
